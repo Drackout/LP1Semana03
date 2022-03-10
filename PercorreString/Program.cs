@@ -14,10 +14,17 @@ namespace PercorreString
             Console.Write("Char->");
             charPedida = char.Parse(Console.ReadLine());
 
-            Console.WriteLine($"String inteira: {stringPedida}");
+            Console.WriteLine($"String : {stringPedida}");
             Console.WriteLine($"Char: {charPedida}");
 
-            Console.WriteLine("String sem char");
+            for(int i = 0; i < stringPedida.Length; i++)
+            {
+                if(stringPedida[i] != charPedida)
+                {
+                    Console.Write(stringPedida[i]);
+                }
+            }
+
         }
     }
 }
