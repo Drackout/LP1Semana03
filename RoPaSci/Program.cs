@@ -8,48 +8,46 @@ namespace RoPaSci
     {
         private static void Main(string[] args)
         {
-            GameItem playr1Item = Enum.Parse<GameItem>(args[0]);
-            GameItem playr2Item = Enum.Parse<GameItem>(args[1]);
+            GameItem[] playerItem = {Enum.Parse<GameItem>(args[0]), 
+            Enum.Parse<GameItem>(args[1])};
 
-            GameItem xxx;
-            
-
-            int result = RockPaperScissors(playr1Item, playr2Item);
+            GameStatus result = RockPaperScissors(playerItem[0], playerItem[1]);
             switch (result)
             {
-                case 0:
+                case GameStatus.Draw:
                     Console.WriteLine("It's a draw!");
                     break;
-                case 1:
+                case GameStatus.Player1Wins:
                     Console.WriteLine("Player 1 wins!");
                     break;
-                case 2:
+                case GameStatus.Player2Wins:
                     Console.WriteLine("Player 2 wins!");
                     break;
             }
         }
 
-        private static int RockPaperScissors(GameItem player1, GameItem player2)
+        private static GameStatus RockPaperScissors(GameItem player1, 
+                                                    GameItem player2)
         {
-                    Console.WriteLine(player1);
-
-            int winner;
+            GameStatus winner;
             if (player1 == player2)
             {
-                winner = 0; // Draw
+                winner = GameStatus.Draw; // Draw
             }
-            else if (((player1 == Enum.Parse<GameItem>("Rock")) && 
-                      (player2 == Enum.Parse<GameItem>("Scissors"))) ||
-                      ((player1 == Enum.Parse<GameItem>("Scissors")) && 
-                      (player2 == Enum.Parse<GameItem>("Paper"))) || 
-                      ((player1 == Enum.Parse<GameItem>("Paper")) && 
-                      (player2 == Enum.Parse<GameItem>("Rock"))))
+            else if (((player1 == GameItem.Rock) && 
+                      (player2 == GameItem.Scissors)) 
+                      ||
+                      ((player1 == GameItem.Scissors) && 
+                      (player2 == GameItem.Paper)) 
+                      || 
+                      ((player1 == GameItem.Paper) && 
+                      (player2 == GameItem.Rock)))
             {
-                winner = 1; // Player 1 wins
+                winner = GameStatus.Player1Wins; // Player 1 wins
             }
             else
             {
-                winner = 2; // Player 2 wins
+                winner = GameStatus.Player2Wins; // Player 2 wins
             }
             return winner;
         }
