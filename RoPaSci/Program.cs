@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using RoPaSci;
 
 namespace RoPaSci
 {
@@ -7,7 +8,13 @@ namespace RoPaSci
     {
         private static void Main(string[] args)
         {
-            int result = RockPaperScissors(args[0], args[1]);
+            GameItem playr1Item = Enum.Parse<GameItem>(args[0]);
+            GameItem playr2Item = Enum.Parse<GameItem>(args[1]);
+
+            GameItem xxx;
+            
+
+            int result = RockPaperScissors(playr1Item, playr2Item);
             switch (result)
             {
                 case 0:
@@ -22,16 +29,21 @@ namespace RoPaSci
             }
         }
 
-        private static int RockPaperScissors(string player1, string player2)
+        private static int RockPaperScissors(GameItem player1, GameItem player2)
         {
+                    Console.WriteLine(player1);
+
             int winner;
             if (player1 == player2)
             {
                 winner = 0; // Draw
             }
-            if (((player1 == "Rock") && (player2 == "Scissors")) ||
-                ((player1 == "Scissors") && (player2 == "Paper")) ||
-                ((player1 == "Paper") && (player2 == "Rock")))
+            else if (((player1 == Enum.Parse<GameItem>("Rock")) && 
+                      (player2 == Enum.Parse<GameItem>("Scissors"))) ||
+                      ((player1 == Enum.Parse<GameItem>("Scissors")) && 
+                      (player2 == Enum.Parse<GameItem>("Paper"))) || 
+                      ((player1 == Enum.Parse<GameItem>("Paper")) && 
+                      (player2 == Enum.Parse<GameItem>("Rock"))))
             {
                 winner = 1; // Player 1 wins
             }

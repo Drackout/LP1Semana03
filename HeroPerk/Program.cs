@@ -27,7 +27,7 @@ namespace HeroPerk
                 else
                 {
                     Console.WriteLine("!Unknown perk!");
-                    run = false;
+                    run=false;
                     break;
                 }
             // Console.WriteLine("USER PERK --->" + userPerks);
@@ -36,35 +36,22 @@ namespace HeroPerk
             if(userPerks == 0)
             {
                 Console.WriteLine("!No perks at all!");
-                Console.WriteLine("!Not gonna make it!");   
             }
-
-            if (userPerks.ToString().Contains(Perks.Stealth.ToString()) &&
-            userPerks.ToString().Contains(Perks.DoubleJump.ToString()) 
-            && run==true) 
-            {
+            if (run && userPerks != 0)
                 Console.WriteLine(userPerks);
+
+            if ((userPerks & Perks.Stealth) == Perks.Stealth & 
+                (userPerks & Perks.DoubleJump) == Perks.DoubleJump)
+            {
                 Console.WriteLine("!Silent jumper!");
             }
-            
-            if (!userPerks.ToString().Contains(Perks.AutoHeal.ToString()) 
-            && run==true && userPerks != 0)
+            if ((userPerks & Perks.AutoHeal) != Perks.AutoHeal)
             {
-                Console.WriteLine(userPerks);
-                Console.WriteLine("!Not gonna make it!");   
-            }    
-
-            // Mega confusão.. com as coisas da aula nao funciona
-            // Percebi a materia dos 0001 0010 etc etc.. 
-            // Nao consigo replicar de jeito nenhum.. não faz sentido
-            // Exercicio feito apenas com remendos
-            // ??????????
-
-
-            //if (userPerks == Perks.Stealth & userPerks == Perks.DoubleJump)
-            //        Console.WriteLine("!Silent jumper!");
-            //if (userPerks == Perks.AutoHeal)
-            //        Console.WriteLine("!Not gonna make it!");
+                Console.WriteLine("!Not gonna make it!");
+            }
+            
+            
+            
         }
     }
 }
