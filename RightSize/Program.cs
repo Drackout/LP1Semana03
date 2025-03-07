@@ -10,6 +10,7 @@ namespace RightSize
             {
                 if (item.Length >= 8)
                 {
+                    //teste
                     Console.WriteLine("[EARLY STOP]");
                     break;
                 }
