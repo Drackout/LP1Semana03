@@ -7,7 +7,7 @@ namespace ArrayMul
     {
         private static void Main(string[] args)
         {
-
+            //
             Console.WriteLine($"a1");
             float[][] arr1 = new float[2][];
             arr1[0] = new float[2] {float.Parse(args[0].Replace(".",",")), float.Parse(args[1].Replace(".",","))};
